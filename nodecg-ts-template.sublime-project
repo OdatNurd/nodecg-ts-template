@@ -1,0 +1,73 @@
+{
+	"folders":
+	[
+		{
+			"name": "bundle (template)",
+			"path": ".",
+			"folder_exclude_patterns": ["node_modules", "//server", "//dashboard/", "//graphics/"],
+			"file_exclude_patterns": ["//extension.js"],
+		},
+		{
+			"name": "server",
+			"path": "./server/",
+		},
+		{
+			"name": "dashboard",
+			"path": "./dashboard/",
+			"folder_exclude_patterns": ["js"],
+		},
+		{
+			"name": "graphics",
+			"path": "./graphics/",
+			"folder_exclude_patterns": ["js"],
+		},
+	],
+	"settings": {
+		"tab_size": 2,
+	},
+	"build_systems": [
+		{
+			"name": "nodecg ts template",
+			"target": "terminus_exec",
+			"cancel": "terminus_cancel_build",
+			"working_dir": "${folder}",
+
+			"shell_cmd": "yarn build",
+
+			"variants": [
+				{
+					"name": "watch",
+					"shell_cmd": "yarn watch",
+				},
+
+				{
+					"name": "extension",
+					"shell_cmd": "yarn build:extension",
+				},
+				{
+					"name": "extension - watch",
+					"shell_cmd": "yarn watch:extension",
+				},
+
+				{
+					"name": "dashboard (panel)",
+					"shell_cmd": "yarn build:panel",
+				},
+				{
+					"name": "dashboard - watch (panel)",
+					"shell_cmd": "yarn watch:panel",
+				},
+
+				{
+					"name": "graphics (overlay)",
+					"shell_cmd": "yarn build:overlay",
+				},
+				{
+					"name": "graphics - watch (overlay)",
+					"shell_cmd": "yarn watch:overlay",
+				},
+
+			],
+		}
+	],
+}
